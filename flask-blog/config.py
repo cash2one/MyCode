@@ -12,7 +12,7 @@ class Config:
     @staticmethod
     def init_app(app):
         _handler = RotatingFileHandler(
-                'app.log', maxBytes=10000, backupCount=1)
+                'log/flask-blog.log', maxBytes=10000, backupCount=1)
         _handler.setLevel(logging.WARNING)
         app.logger.addHandler(_handler)
 
