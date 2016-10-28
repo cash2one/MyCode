@@ -1,0 +1,50 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <link rel="shortcut icon" href="/static/favicon.ico" />
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+    <meta name="renderer" content="webkit">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b2ed1e7e0939b49703637cc591186350";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script> {% block headEx %}{% endblock %}
+</head>
+
+<body>
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">你正在使用一个 <strong>过时的</strong> 浏览器. 请升级你的浏览器或使用新一代的浏览器来提升你的浏览体验.</p>
+    <![endif]-->
+    {% block mainEx %} {% block hsBase %}
+    <app :reset="reset">
+        {% block pageEx %} {% endblock %}
+    </app>
+    {% endblock %} {% endblock %}
+    <script>
+    $DATA = {
+        g_user: {{ ( g.user and g.user.json() ) | tojson }},
+        reset: {}
+    };
+    </script> {% block scriptBefore %}{% endblock %}
+    <script src="/static/2.0/dist/common.js"></script>
+    <script src="/static/2.0/dist/main.js"></script> {% block current_path %}
+    <script>
+    var cur_path = encodeURI(location.pathname);
+    Cookies.set('cur_path', cur_path, { expires: 30, path: '/' });
+    </script> {% endblock %} {% block scriptAfter %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+{% extends "2.0/mobile/hs-m-base.html" %} {% block pageEx %}
+<m-index></m-index>
+{% endblock %} {% block scriptBefore %}
+<script>
+$DATA.data = {{ data | tojson }};
+</script> {% endblock %}
