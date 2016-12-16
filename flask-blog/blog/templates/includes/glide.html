@@ -1,0 +1,56 @@
+
+{% if articles %}
+    <div class="swiper-container slider">
+        <div class="swiper-wrapper">
+            {% for article in articles  %}
+            {% if article.thumbnail %}
+            <div class="swiper-slide article-entry-thumb" style="background-image: url({{ url_for('static', filename='images/thumbnails/'+article.thumbnail) }})" ><a href="{{ url_for('.articleDetails', id=article.id) }}" class="article-button" >{{ article.title }}</a></div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/swiper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.1.0.js') }}"></script>
+
+     <script>
+
+        var swiper = new Swiper(".slider",{
+//          自动播放 3s播放一次
+            autoplay : 3000,
+			slidesPerView : 2,
+			centeredSlides : true,
+            loop : true, 
+            paginationClickable :true,
+            autoplayDisableOnInteraction : false,
+            pagination : '.swiper-pagination',
+            prevButton:'.swiper-button-prev',
+            nextButton:'.swiper-button-next',
+
+        });
+        
+        $('.swiper-slide').each(function(){
+        	$(this).hover(function(){
+        		//鼠标移入button显示
+        		$(this).children('a').css('display','inline-block');
+                $(this).children('a').css('text-decoration','none');
+                $(this).children('a').css('color','#0e90d2;');
+//        		$(this).css('background','gray');
+//        		$(this).css('opacity','0.5');
+        	},function(){
+        		//鼠标移出button消失
+        		$(this).children('a').css('display','none');
+//      		$(this).css('background','gray');
+//      		$(this).css('opacity','1');
+        	})
+        	$(this).children('a').on('click',function(){
+        		//指定跳转
+        	})
+        })
+
+    </script>
+{% endif %}

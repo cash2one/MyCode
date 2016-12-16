@@ -1,0 +1,8 @@
+#
+# robots.txt for http://www.codingpy.com/
+# Author: EarlGrey@codingpy.com
+# crawler not permitted to index /admin
+#
+
+User-agent: *
+Disallow: */page/2

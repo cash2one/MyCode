@@ -110,10 +110,10 @@ class User(db.Model):
 	@staticmethod
 	def generate_room_id(self):
 		room_id = db.session.execute(room_sequence)
-		print room_id
+		print (room_id)
 		self.room_id = room_id
 		db.session.commit()
-		print db.session.execute(text('select id_generator()')).scalar()
+		print (db.session.execute(text('select id_generator()')).scalar())
 
 	def __repr__(self):
 		return "%s(%s)" % (self.__class__.__name__, self.id)
